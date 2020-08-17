@@ -1,0 +1,97 @@
+{
+  "search_catalog_response": {
+    "search_catalog_result": {
+      "credentials": {
+        "checksum": "XXXXX=",
+        "datetime": "2020-08-17T12:39:21.905064+00:00",
+        "method": "search_catalog",
+        "uuid": "c11769bb-9602-4724-867e-d9fe52f76996"
+      },
+      "items": {
+        "CatalogItem": [
+          {
+            "brand": "Apple",
+            "catalog_item_id": 1234,
+            "catalog_price": "324.73",
+            "categories": {
+              "integer": [
+                1,
+                2
+              ]
+            },
+            "currency": "USD",
+            "has_options": 0,
+            "image_150": "https://xxxxx.cloudfront.net/asset/1234_150_.jpg",
+            "image_300": "https://xxxxx.cloudfront.net/asset/1234_300_.jpg",
+            "image_75": "https://xxxxx.cloudfront.net/asset/1234_75_.jpg",
+            "model": "APIPODT128S",
+            "name": "128GB iPod touch (7th Generation, Silver)",
+            "options": {},
+            "original_points": 6495,
+            "original_price": "324.73",
+            "points": 6495,
+            "rank": 300,
+            "retail_price": "274.99",
+            "shipping_estimate": "10.00",
+            "tags": {
+              "string": []
+            }
+          },
+          {
+            "brand": "Apple",
+            "catalog_item_id": 4321,
+            "catalog_price": "340.97",
+            "categories": {
+              "integer": [
+                1,
+                2
+              ]
+            },
+            "currency": "USD",
+            "has_options": 0,
+            "image_150": "https://xxxxx.cloudfront.net/asset/4321_150_.jpg",
+            "image_300": "https://xxxxx.cloudfront.net/asset/4321_300_.jpg",
+            "image_75": "https://xxxxx.cloudfront.net/asset/4321_75_.jpg",
+            "model": "APIPODT128P",
+            "name": "128GB iPod touch (7th Generation, Pink)",
+            "options": {},
+            "original_points": 6820,
+            "original_price": "340.97",
+            "points": 6820,
+            "rank": 300,
+            "retail_price": "289.99",
+            "shipping_estimate": "10.00",
+            "tags": {
+              "string": []
+            }
+          }
+        ]
+      },
+      "pager": {
+        "first_page": 1,
+        "has_next": 1,
+        "has_previous": 0,
+        "last_page": 19,
+        "page": 1,
+        "pages": {
+          "integer": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        "per_page": 2,
+        "result_count": 37,
+        "sort": "score desc"
+      }
+    }
+  }
+}

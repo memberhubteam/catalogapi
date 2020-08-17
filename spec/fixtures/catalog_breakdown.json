@@ -1,0 +1,45 @@
+{
+  "catalog_breakdown_response": {
+    "catalog_breakdown_result": {
+      "categories": {
+        "Category": [
+          {
+            "category_id": "99",
+            "children": {
+              "Category": [
+                {
+                  "category_id": "11",
+                  "children": {
+                    "Category": []
+                  },
+                  "depth": 1,
+                  "item_count": "30",
+                  "name": "Tools & Equipment",
+                  "parent_category_id": "99"
+                }
+              ]
+            },
+            "depth": 0,
+            "item_count": "37",
+            "name": "Automotive",
+            "parent_category_id": 0
+          }
+        ]
+      },
+      "credentials": {
+        "checksum": "XXXXX=",
+        "datetime": "2020-08-17T12:03:39.757424+00:00",
+        "method": "catalog_breakdown",
+        "uuid": "54912023-f50a-46fa-b9ad-d02b7e54f011"
+      },
+      "socket": {
+        "currency": "?",
+        "language": "?",
+        "point_to_currency_ratio": "20.00",
+        "region": "?",
+        "socket_id": 1710,
+        "socket_name": "Master Catalog API - API Batch Clients"
+      }
+    }
+  }
+}

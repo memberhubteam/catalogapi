@@ -1,0 +1,41 @@
+{
+  "view_item_response": {
+    "view_item_result": {
+      "credentials": {
+        "checksum": "XXXXXXX=",
+        "datetime": "2020-08-17T12:57:39.730034+00:00",
+        "method": "view_item",
+        "uuid": "8abb4ce8-77b2-47f7-a024-a43b057fda30"
+      },
+      "item": {
+        "brand": "Apple",
+        "catalog_item_id": 1234,
+        "catalog_price": "324.73",
+        "categories": {
+          "integer": [
+            1,
+            2
+          ]
+        },
+        "currency": "USD",
+        "description": "<div id=\"product_description\" style=\"width: 100%; margin-top: 5px; margin-bottom: 5px;\"> Crafted for more than just music, the 7th generation <b>128GB iPod touch</b> from <b>Apple</b> delivers immersive augmented reality gaming experiences, gives you the ability to connect with friends via Group FaceTime, and grants you access to everything the App Store has to offer. Inside the iPod touch is the A10 Fusion chip.<br /> <br /> The A10 has been engineered to pack enough processing punch to give you fluid performance while running the latest mobile games and augmented reality experiences.<br /> <br /> When it comes to music, the iPod touch gives you 128GB of storage space so you always have your favorite tracks on hand. You also have the ability to subscribe to Apple Music for millions of streaming options. Listen with some (optional) Bluetooth headphones, or plug the included Apple EarPods into the built-in headphone jack.<br /> <br /> The iPod touch also features a rear and front camera for snapping HDR photos, 1080p videos, and connecting with friends over Group FaceTime. However you choose to have fun with the iPod touch, you'll play and manage it all through a sharp and vivid 4&quot; Retina display. \n    </div><div id=\"product_features\" style=\"width: 100%; margin-top: 5px; margin-bottom: 5px;\"><table border=\"0\"><tr><td><b>DAC</b></td><td></td></tr><tr><td><b>Amplifier</b></td><td></td></tr><tr><td><b>External DAC Functionality</b></td><td></td></tr><tr><td><b>Gain Settings</b></td><td></td></tr><tr><td><b>THD + N</b></td><td></td></tr><tr><td><b>Audio Power Output</b></td><td></td></tr><tr><td><b>Maximum Output Current</b></td><td></td></tr><tr><td><b>Maximum Output Voltage</b></td><td></td></tr><tr><td><b>Signal to Noise Ratio</b></td><td></td></tr><tr><td><b>Clock Jitter</b></td><td></td></tr><tr><td><b>Crosstalk</b></td><td></td></tr><tr><td><b>Balance Control</b></td><td></td></tr><tr><td><b>Performance</b></td><td></td></tr><tr><td><b>CPU</b></td><td> Apple&nbsp;A10&nbsp;Fusion \n      </td></tr><tr><td><b>RAM</b></td><td></td></tr><tr><td><b>Operating System</b></td><td> iOS 12 \n      </td></tr><tr><td><b>Internal Storage Capacity</b></td><td> 128&nbsp;GB \n      </td></tr><tr><td><b>Maximum Storage Capacity</b></td><td></td></tr><tr><td><b>Flash Media Slot</b></td><td> <i>None</i> \n      </td></tr><tr><td><b>Display</b></td><td> 4\" LCD (1136 x 640 Resolution) \n      </td></tr><tr><td><b>Operation Method</b></td><td> Physical Buttons, Touchscreen \n      </td></tr><tr><td><b>Media Support</b></td><td></td></tr><tr><td><b>Video Recording</b></td><td> Yes \n      </td></tr><tr><td><b>Video Playback</b></td><td> Yes \n      </td></tr><tr><td><b>Formats Supported</b></td><td> <b>Audio:</b> AAC-LC, HE-AAC, HE-AAC v2, Protected AAC, MP3, Linear PCM, Apple Lossless, FLAC, Dolby Digital (AC-3), Dolby Digital Plus (E-AC-3), and Audible (formats 2, 3, 4, Audible Enhanced Audio, AAX, and AAX+)<br /><b>Video:</b> HEVC, H.264, MPEG-4 Part 2, and Motion JPEG \n      </td></tr><tr><td><b>Connectivity</b></td><td></td></tr><tr><td><b>Wireless</b></td><td> Bluetooth 4.1<br>Wi-Fi 5 (802.11ac) \n      </td></tr><tr><td><b>Bluetooth Codecs</b></td><td> AAC \n      </td></tr><tr><td><b>Connections</b></td><td> <b>1 x </b>1/8\" / 3.5 mm Headphone Output<br /><b>1 x </b>Lightning USB 3.0 Input \n      </td></tr><tr><td><b>Built-In Mic</b></td><td> Yes \n      </td></tr><tr><td><b>Power</b></td><td></td></tr><tr><td><b>Battery</b></td><td> <b>Built-in Rechargeable Lithium-ion Battery<br>Providing up to 40 Hours per Charge for Audio Playback<br>Providing up to 8 Hours per Charge for Video Playback \n      </td></tr><tr><td><b>General</b></td><td></td></tr><tr><td><b>System Requirements</b></td><td> <b>Operating System</b> <br>Windows 7, 7 (SP1), 8, 8.1, 10<br>Mac OS X 10.11.4<br><br><b>Software</b><br>iTunes 12.2 \n      </td></tr><tr><td><b>Supported Languages</b></td><td> Arabic<br>Czech<br>Danish<br>Dutch<br>English<br>Finnish<br>French<br>German<br>Greek<br>Hebrew<br>Hungarian<br>Italian<br>Japanese<br>Korean<br>Norwegian<br>Polish<br>Portuguese<br>Romanian<br>Russian<br>Simplified Chinese<br>Spanish<br>Swedish<br>Thai<br>Traditional Chinese<br>Turkish \n      </td></tr><tr><td><b>Temperature</b></td><td> <b>Operating</b><br>32 to 95&deg;F (0 to 35&deg;C)<br /><b>Storage</b><br>-4 to 113&deg;F (-20 to 45&deg;C) \n      </td></tr><tr><td><b>Dimensions (W x H x D)</b></td><td> 2.3 x 4.9 x 0.2\" / 58.6 x 123.4 x 6.1&nbsp;mm \n      </td></tr><tr><td><b>Weight</b></td><td> 3.10&nbsp;oz / 88&nbsp;g \n      </td></tr></table></div>",
+        "has_options": 0,
+        "image_150": "https://dck0i7x64ch95.cloudfront.net/asset/1234_150_.jpg",
+        "image_300": "https://dck0i7x64ch95.cloudfront.net/asset/1234_300_.jpg",
+        "image_75": "https://dck0i7x64ch95.cloudfront.net/asset/1234_75_.jpg",
+        "model": "APIPODT128S",
+        "name": "128GB iPod touch (7th Generation, Silver)",
+        "options": {},
+        "original_points": 6495,
+        "original_price": "324.73",
+        "points": 6495,
+        "rank": 300,
+        "retail_price": "274.99",
+        "shipping_estimate": "10.00",
+        "tags": {
+          "string": []
+        }
+      }
+    }
+  }
+}

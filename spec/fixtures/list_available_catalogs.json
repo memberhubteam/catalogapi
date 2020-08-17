@@ -1,0 +1,31 @@
+{
+  "list_available_catalogs_response": {
+    "list_available_catalogs_result": {
+      "credentials": {
+        "checksum": "XXXXXX=",
+        "datetime": "2020-08-17T11:21:55.234522+00:00",
+        "method": "list_available_catalogs",
+        "uuid": "dcc88a50-0347-49bf-a113-dd7b90a53852"
+      },
+      "domain": {
+        "account_description": "The master account",
+        "account_name": "Online Rewards",
+        "domain_name": "memberhub.catalogapi.com",
+        "redemption_active": "0",
+        "sockets": {
+          "Socket": [
+            {
+              "currency": "USD",
+              "export_uri": "https://s3.us-east-1.amazonaws.com/XXX-XXX-XXX",
+              "language": "en",
+              "point_to_currency_ratio": "20.00",
+              "region": "US",
+              "socket_id": "1",
+              "socket_name": "CatalogAPI socket for Client"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
