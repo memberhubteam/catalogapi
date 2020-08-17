@@ -7,8 +7,9 @@ require 'time'
 
 module CatalogAPI
   class Request
-    attr_accessor :method_name, :path, :response, :json
+    attr_accessor :method_name, :path, :response, :json, :data
     def initialize(method_name, path: nil)
+      @data = []
       @method_name = method_name
       @path = path || method_name
     end
@@ -31,20 +32,6 @@ module CatalogAPI
       self
     end
 
-    def required_params
-      {
-        creds_datetime: time,
-        creds_uuid: uuid,
-        creds_checksum: checksum
-      }
-    end
-
-    # http://memberhub.catalogapi.com/docs/checksums/
-    def checksum
-      Base64.encode64(OpenSSL::HMAC.digest('sha1', CatalogAPI.key, concatted))
-            .gsub("\n", '')
-    end
-
     # CatalogAPI Error
     class Error < StandardError
       attr_accessor :code, :body
@@ -58,7 +45,33 @@ module CatalogAPI
       end
     end
 
+    def first
+      data.first
+    end
+
+    def each(&block)
+      data.each(&block)
+    end
+
+    def map(&block)
+      data.map(&block)
+    end
+
     private
+
+    def required_params
+      {
+        creds_datetime: time,
+        creds_uuid: uuid,
+        creds_checksum: checksum
+      }
+    end
+
+    # http://memberhub.catalogapi.com/docs/checksums/
+    def checksum
+      Base64.encode64(OpenSSL::HMAC.digest('sha1', CatalogAPI.key, concatted))
+            .gsub("\n", '')
+    end
 
     def check_status!
       case response.code.to_i

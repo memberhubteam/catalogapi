@@ -2,11 +2,11 @@
 
 RSpec.describe CatalogAPI::Request do
   it 'has checksum value' do
-    expect(CatalogAPI::Request.new(:test_me).checksum).to_not be nil
+    expect(CatalogAPI::Request.new(:test_me).send(:checksum)).to_not be nil
   end
 
   it 'has required parameters' do
-    expect(CatalogAPI::Request.new(:test_me).required_params.keys).to be
+    expect(CatalogAPI::Request.new(:test_me).send(:required_params).keys).to be
     %i[creds_datetime creds_uuid creds_checksum]
   end
 

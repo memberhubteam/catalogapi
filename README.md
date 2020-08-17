@@ -22,7 +22,72 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Setup your CatalogAPI
+
+```
+CatalogAPI.key         = 'test-key'    # provided by CatalogAPI.com
+CatalogAPI.token       = 'test-token'  # provided by CatalogAPI.com
+CatalogAPI.environment = 'development' # or production, default is development
+CatalogAPI.username    = 'username'    # provided by CatalogAPI.com (subdomain)
+```
+
+### Catalogs
+
+#### List Available Catalogs
+
+```
+CatalogAPI::Catalog.list_available.data
+=> [
+  #<CatalogAPI::Catalog:0x00007faa44be80e8 @currency="USD", @export_uri=...,
+  #<CatalogAPI::Catalog:0x00007faa44be80e9 @currency="USD", @export_uri=...,
+]
+```
+
+#### List the item categories available in a catalog
+
+```
+CatalogAPI::Catalog.new(socket_id: '123').breakdown.data
+=> [
+  #<CatalogAPI::Category:0x00007f806a40c5d0
+    @category_id="99",
+    @children=[#<CatalogAPI::Category:0x00007f806a40c530 @category_id="11"...>],
+    ...
+  >,
+  ...
+]
+```
+
+#### Searches a catalog by keyword, category, or price range.
+
+```
+CatalogAPI::Catalog.new(socket_id: '123').search(search: 'ipod').data
+=> [
+  #<CatalogAPI::Item:0x00007fa77c56f3d0
+    @brand="Apple",
+    @catalog_item_id=1234
+    ...
+  >,
+  ...
+]
+```
+
+__Note the `paginated` option will paginate over all pages and aggregate the result__
+
+### Items
+
+#### View the full details of a single item.
+
+```
+CatagalogAPI::Item.new(catalog_item_id: 1, socket_id: 2).view.data
+=> #<CatalogAPI::Item:0x00007ff7eb43efc8
+  ...
+  @catalog_item_id="1",
+  ...
+  @description=
+  ...
+>
+```
+
 
 ## Development
 

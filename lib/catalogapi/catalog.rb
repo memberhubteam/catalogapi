@@ -10,7 +10,8 @@ module CatalogAPI
           :list_available_catalogs_response, :list_available_catalogs_result,
           :domain, :sockets, :Socket
         ).to_a
-        sockets.map { |socket| new(socket) }
+        request.data = sockets.map { |socket| new(socket) }
+        request
       end
     end
 
@@ -35,7 +36,8 @@ module CatalogAPI
         :catalog_breakdown_response, :catalog_breakdown_result, :categories,
         :Category
       ).to_a
-      catgories.map { |cateogry| CatalogAPI::Category.new(cateogry) }
+      request.data = catgories.map { |cateogry| CatalogAPI::Category.new(cateogry) }
+      request
     end
 
     # @option options [String] :name Searches the names of items.
@@ -48,18 +50,26 @@ module CatalogAPI
     # @option options [String] :max_rank Do not return items with a rank higher than this value.
     # @option options [String] :tag We have the ability to "tag" certain items based on custom criteria that is unique to our clients. If we setup these tags on your catalog, you can pass a tag name with your search.
     # @option options [String] :page The page number. Defaults to 1.
+    # @option options [String] :paginated Whether to paginate the call or return the first page result default: nil
     # @option options [String] :per_page The number of items to return, per page. Can be from 1 to 50. Defaults to 10.
     # @option options [String] :sort The following sort values are supported: 'points desc', 'points asc', 'rank asc', 'score desc', 'random asc'
     # @option options [String] :catalog_item_ids Return only items in the given list.
     # @return [Array[CatalogAPI::Item]] Searches a catalog by keyword, category, or price range.
-    def search(options = {})
+    def search(options = {}, request = nil)
       raise CatalogAPI::Error, 'No Socket ID' if socket_id.nil?
 
-      request = CatalogAPI.request.new(:search_catalog).get(options.to_h.merge(socket_id: socket_id))
+      request ||= CatalogAPI.request.new(:search_catalog)
+      request = request.get(options.to_h.merge(socket_id: socket_id))
       items = request.json.dig(
         :search_catalog_response, :search_catalog_result, :items, :CatalogItem
       ).to_a
-      items.map { |item| CatalogAPI::Item.new(item) }
+      request.data += items.map { |item| CatalogAPI::Item.new(item.merge(socket_id: socket_id)) }
+      page_info = request.json.dig(:search_catalog_response, :search_catalog_result, :pager).to_h
+      paginated = options[:paginated] && page_info[:has_next].to_i == 1
+      if paginated
+        request = search(options.merge(page: page_info[:page] + 1), request)
+      end
+      request
     end
   end
 end

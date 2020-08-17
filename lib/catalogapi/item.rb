@@ -8,7 +8,7 @@ module CatalogAPI
                 :currency, :has_options, :image_150, :image_300,
                 :image_75, :model, :name, :options, :original_points,
                 :original_price, :points, :rank, :retail_price,
-                :shipping_estimate, :tags
+                :shipping_estimate, :socket_id, :tags
     def initialize(opts)
       @brand = opts[:brand]
       @catalog_item_id = opts[:catalog_item_id]
@@ -29,18 +29,19 @@ module CatalogAPI
       @rank = opts[:rank]
       @retail_price = opts[:retail_price]
       @shipping_estimate = opts[:shipping_estimate]
+      @socket_id = opts[:socket_id]
       @tags = opts[:tags].to_h[:string]
     end
 
-    def view(socket_id)
+    def view
       raise CatalogAPI::Error, 'No Socket ID' if socket_id.nil?
       raise CatalogAPI::Error, 'No Catalog Item ID' if catalog_item_id.nil?
 
-      fields = CatalogAPI.request.new(:view_item)
-                         .get(socket_id: socket_id, catalog_item_id: catalog_item_id)
-                         .json.dig(:view_item_response, :view_item_result, :item)
-      self.description = fields[:description]
-      self
+      request = CatalogAPI.request.new(:view_item)
+                          .get(socket_id: socket_id, catalog_item_id: catalog_item_id)
+      fields = request.json.dig(:view_item_response, :view_item_result, :item)
+      request.data = self.class.new(fields)
+      request
     end
   end
 end
