@@ -8,13 +8,14 @@ module CatalogAPI
                 :currency, :has_options, :image_150, :image_300,
                 :image_75, :model, :name, :options, :original_points,
                 :original_price, :points, :rank, :retail_price,
-                :shipping_estimate, :socket_id, :tags
+                :shipping_estimate, :socket_id, :tags,
+                :quantity, :option_id
     def initialize(opts)
       @brand = opts[:brand]
       @catalog_item_id = opts[:catalog_item_id]
       @catalog_price = opts[:catalog_price]
       @categories = opts[:categories].to_h[:integer]
-      @currency = opts[:currency]
+      @currency = opts[:currency] || 'USD'
       @description = opts[:description]
       @has_options = opts[:has_options]
       @image_150 = opts[:image_150]
@@ -31,6 +32,22 @@ module CatalogAPI
       @shipping_estimate = opts[:shipping_estimate]
       @socket_id = opts[:socket_id]
       @tags = opts[:tags].to_h[:string]
+      @quantity = opts[:quantity] || 1
+      @option_id = opts[:option_id]
+    end
+
+    def order_params
+      {
+        catalog_item_id: catalog_item_id,
+        quantity: quantity,
+        currency: currency,
+        catalog_price: catalog_price,
+        option_id: option_id
+      }
+    end
+
+    def orderable?
+      !catalog_item_id.nil? && !catalog_price.nil?
     end
 
     def view

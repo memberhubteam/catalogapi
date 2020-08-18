@@ -1,0 +1,13 @@
+{
+  "order_place_response": {
+    "order_place_result": {
+      "credentials": {
+        "checksum": "XXXXXXXXXXXXX=",
+        "datetime": "2013-02-25T18:46:36.408006+00:00",
+        "method": "order_place",
+        "uuid": "98363978-ae44-452b-8506-cc8d76e4b65f"
+      },
+      "order_number": "1111-22222-33333-4444"
+    }
+  }
+}

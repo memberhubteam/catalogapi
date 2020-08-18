@@ -64,11 +64,9 @@ module CatalogAPI
         :search_catalog_response, :search_catalog_result, :items, :CatalogItem
       ).to_a
       request.data += items.map { |item| CatalogAPI::Item.new(item.merge(socket_id: socket_id)) }
-      page_info = request.json.dig(:search_catalog_response, :search_catalog_result, :pager).to_h
-      paginated = options[:paginated] && page_info[:has_next].to_i == 1
-      if paginated
-        request = search(options.merge(page: page_info[:page] + 1), request)
-      end
+      # Pagination
+      next_page = options[:paginated] ? request.next_page : nil
+      request = search(options.merge(page: next_page), request) if next_page
       request
     end
   end

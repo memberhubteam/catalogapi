@@ -1,0 +1,96 @@
+{
+  "order_track_response": {
+    "order_track_result": {
+      "credentials": {
+        "checksum": "XXXXXXXXXXXX=",
+        "datetime": "2020-08-18T14:01:53.287034+00:00",
+        "method": "order_track",
+        "uuid": "010d6317-fab5-44ef-8df8-b9c7a9da5164"
+      },
+      "order": {
+        "address_1": "123 Test St.",
+        "address_2": "Apt. 123",
+        "address_3": "",
+        "birth_date": "",
+        "city": "Cincinnati",
+        "company_name": "company_name",
+        "country": "US",
+        "date_placed": "2013-02-20T22:27:46",
+        "email": "testuser@example.com",
+        "external_order_number": "PO-123",
+        "external_user_id": "testuser",
+        "first_name": "Test",
+        "fulfillments": {
+          "Fulfillment": [
+            {
+              "fulfillment_date": "2013-02-20T22:28:23",
+              "items": {
+                "FulfillmentItem": [
+                  {
+                    "order_item_id": "114038"
+                  }
+                ]
+              },
+              "metadata": {
+                "Meta": [
+                  {
+                    "key": "SHIPPER",
+                    "uri": "",
+                    "value": "TESTPS"
+                  },
+                  {
+                    "key": "TRACKING",
+                    "uri": "",
+                    "value": "TEST353921673255"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "gender": 0,
+        "is_test": "1",
+        "items": {
+          "OrderItem": [
+            {
+              "catalog_item_id": "1970498",
+              "catalog_price": "374.15",
+              "currency": "USD",
+              "metadata": {
+                "Meta": [
+                  {
+                    "key": "custom_item_field",
+                    "uri": "http://example.com/09876",
+                    "value": "test"
+                  }
+                ]
+              },
+              "name": "32GB iPod touch (Black & Slate) (5th Generation)",
+              "option": "",
+              "order_item_id": "114038",
+              "order_item_status": "Fulfilled",
+              "order_item_status_id": "4",
+              "points": "0"
+            }
+          ]
+        },
+        "last_name": "User",
+        "metadata": {
+          "Meta": [
+            {
+              "key": "my_custom_field",
+              "uri": "http://example.com/1234567",
+              "value": "foo"
+            }
+          ]
+        },
+        "name_prefix": "",
+        "name_suffix": "",
+        "order_number": "9266-02805-92881-0001",
+        "phone_number": "513-555-1234",
+        "postal_code": "00000",
+        "state_province": "OH"
+      }
+    }
+  }
+}

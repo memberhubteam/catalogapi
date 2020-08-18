@@ -17,12 +17,18 @@ module CatalogAPI
     def base_url
       env = CatalogAPI.production? ? 'prod' : 'dev'
       username = CatalogAPI.username
-      "https://#{username}.#{env}.catalogapi.com/v1/rest/"
+      "https://#{username}.#{env}.catalogapi.com/v1"
     end
 
     def get(params = {})
-      url = "#{base_url}#{path}"
+      url = "#{base_url}/rest/#{path}"
       self.response = HTTP.get(url, { params: params.merge(required_params) })
+      json_response
+    end
+
+    def post(params = {})
+      url = "#{base_url}/json/#{path}"
+      self.response = HTTP.post(url, { json: params.merge(required_params) })
       json_response
     end
 
@@ -57,7 +63,14 @@ module CatalogAPI
       data.map(&block)
     end
 
-    private
+    def next_page
+      page_info = json.dig(
+        "#{method_name}_response".to_sym, "#{method_name}_result".to_sym, :pager
+      ).to_h
+      return nil unless page_info[:has_next].to_i == 1
+
+      page_info[:page] + 1
+    end
 
     def required_params
       {
@@ -66,6 +79,8 @@ module CatalogAPI
         creds_checksum: checksum
       }
     end
+
+    private
 
     # http://memberhub.catalogapi.com/docs/checksums/
     def checksum

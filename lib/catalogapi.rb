@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 require 'catalogapi/request'
+require 'catalogapi/catalog'
 require 'catalogapi/category'
 require 'catalogapi/item'
-require 'catalogapi/catalog'
+require 'catalogapi/order'
 require 'catalogapi/version'
 
 require 'pry'
