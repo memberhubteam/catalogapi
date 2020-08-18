@@ -7,7 +7,7 @@ require 'time'
 
 module CatalogAPI
   class Request
-    attr_accessor :method_name, :path, :response, :json, :data
+    attr_accessor :method_name, :path, :response, :json, :data, :body
     def initialize(method_name, path: nil)
       @data = []
       @method_name = method_name
@@ -28,7 +28,8 @@ module CatalogAPI
 
     def post(params = {})
       url = "#{base_url}/json/#{path}"
-      self.response = HTTP.post(url, { json: params.merge(required_params) })
+      puts params
+      self.response = HTTP.post(url, { json: params })
       json_response
     end
 
@@ -42,6 +43,8 @@ module CatalogAPI
     class Error < StandardError
       attr_accessor :code, :body
       def initialize(response)
+        puts response.inspect
+        puts response.body
         @body = response.body
         @code = response.code
       end
@@ -72,11 +75,12 @@ module CatalogAPI
       page_info[:page] + 1
     end
 
-    def required_params
+    def required_params(prepend = 'creds_')
       {
-        creds_datetime: time,
-        creds_uuid: uuid,
-        creds_checksum: checksum
+        "#{prepend}datetime".to_sym => time,
+        "#{prepend}uuid".to_sym => uuid,
+        "#{prepend}checksum".to_sym => checksum,
+        "#{prepend}method".to_sym => method_name.to_s
       }
     end
 

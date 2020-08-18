@@ -13,7 +13,7 @@ module CatalogAPI
   class Error < StandardError; end
 
   class << self
-    attr_accessor :environment, :key, :username
+    attr_accessor :environment, :key, :token, :username
 
     def development?
       !production?

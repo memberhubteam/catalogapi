@@ -1,8 +1,6 @@
 # CatalogAPI
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/catalogapi`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Ruby wrapper around the http://catalogapi.com/ API
 
 ## Installation
 
@@ -38,8 +36,8 @@ CatalogAPI.username    = 'username'    # provided by CatalogAPI.com (subdomain)
 ```
 CatalogAPI::Catalog.list_available.data
 => [
-  #<CatalogAPI::Catalog:0x00007faa44be80e8 @currency="USD", @export_uri=...,
-  #<CatalogAPI::Catalog:0x00007faa44be80e9 @currency="USD", @export_uri=...,
+  #<CatalogAPI::Catalog @currency="USD", @export_uri=...,
+  #<CatalogAPI::Catalog @currency="USD", @export_uri=...,
 ]
 ```
 
@@ -48,9 +46,9 @@ CatalogAPI::Catalog.list_available.data
 ```
 CatalogAPI::Catalog.new(socket_id: '123').breakdown.data
 => [
-  #<CatalogAPI::Category:0x00007f806a40c5d0
+  #<CatalogAPI::Category
     @category_id="99",
-    @children=[#<CatalogAPI::Category:0x00007f806a40c530 @category_id="11"...>],
+    @children=[#<CatalogAPI::Category @category_id="11"...>],
     ...
   >,
   ...
@@ -62,7 +60,7 @@ CatalogAPI::Catalog.new(socket_id: '123').breakdown.data
 ```
 CatalogAPI::Catalog.new(socket_id: '123').search(search: 'ipod').data
 => [
-  #<CatalogAPI::Item:0x00007fa77c56f3d0
+  #<CatalogAPI::Item
     @brand="Apple",
     @catalog_item_id=1234
     ...
@@ -78,14 +76,52 @@ __Note the `paginated` option will paginate over all pages and aggregate the res
 #### View the full details of a single item.
 
 ```
-CatagalogAPI::Item.new(catalog_item_id: 1, socket_id: 2).view.data
-=> #<CatalogAPI::Item:0x00007ff7eb43efc8
+CatalogAPI::Item.new(catalog_item_id: 1, socket_id: 2).view.data
+=> #<CatalogAPI::Item
   ...
   @catalog_item_id="1",
   ...
   @description=
   ...
 >
+```
+
+### Orders
+
+#### List all orders
+
+```
+CatalogAPI::Order.list(external_user_id).data
+=> [
+  #<CatalogAPI::Order
+    external_user_id=1
+    ...
+  >,
+  ...
+]
+```
+__Note the `paginated` option will paginate over all pages and aggregate the result__
+
+#### Place an order
+```
+CatalogAPI::Order.new(
+  items: CatalogAPI::Item.new,
+  first_name: "Test",
+  last_name: "Testman",
+  address_1: "123 Test Street",
+  city: "Cincinnati",
+  state_province: "OH",
+  postal_code: "00000",
+  country: "US"
+).place.data
+=> #<CatalogAPI::Order @order_number="XXXX-XXXXX-XXXXX-XXXX" ...>
+```
+
+#### Track an order
+
+```
+CatalogAPI::Order.new(order_number: '4004-20883-04361-0098').track.data
+=> #<CatalogAPI::Item:0x00007f92d6430948 @order_number="4004-20883-04361-0098" ...>
 ```
 
 
