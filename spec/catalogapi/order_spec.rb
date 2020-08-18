@@ -48,7 +48,7 @@ RSpec.describe CatalogAPI::Order do
         country: 'something',
         email: 'something',
         phone_number: 'something',
-        items: [CatalogAPI::Item.new(catalog_item_id: 1, catalog_price: 1.00)]
+        items: [CatalogAPI::Item.new(socket_id: 1, catalog_item_id: 1, catalog_price: 1.00)]
       }
     end
 
@@ -68,7 +68,7 @@ RSpec.describe CatalogAPI::Order do
     end
 
     it 'validates required params' do
-      required = %i[socket_id first_name last_name address_1 city state_province postal_code country items]
+      required = %i[first_name last_name address_1 city state_province postal_code country items]
       required.each do |i|
         expect do
           CatalogAPI::Order.new(options.merge(i => nil)).place
@@ -81,7 +81,7 @@ RSpec.describe CatalogAPI::Order do
     it 'makes http GET request and renders Order' do
       order_number = '9266-02805-92881-0001'
       body = fixture('order_track.json')
-      stub_request(:get, "https://username.dev.catalogapi.com/v1/json/order_track?order_number=#{order_number}")
+      stub_request(:get, %r{https://username.dev.catalogapi.com/v1/rest/order_track?.{0,1000}order_number=#{order_number}})
         .to_return(status: 200, body: body.to_json, headers: {})
 
       order = CatalogAPI::Order.new(order_number: order_number)
