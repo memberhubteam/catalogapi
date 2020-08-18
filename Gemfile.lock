@@ -3,7 +3,6 @@ PATH
   specs:
     catalogapi (0.1.0rc1)
       http (~> 4.0)
-      openssl (~> 2.2)
 
 GEM
   remote: https://rubygems.org/
@@ -32,7 +31,6 @@ GEM
     http-parser (1.2.1)
       ffi-compiler (>= 1.0, < 2.0)
     method_source (1.0.0)
-    openssl (2.2.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)

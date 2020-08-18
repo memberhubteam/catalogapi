@@ -28,7 +28,6 @@ module CatalogAPI
 
     def post(params = {})
       url = "#{base_url}/json/#{path}"
-      puts params
       self.response = HTTP.post(url, { json: params })
       json_response
     end
@@ -43,8 +42,6 @@ module CatalogAPI
     class Error < StandardError
       attr_accessor :code, :body
       def initialize(response)
-        puts response.inspect
-        puts response.body
         @body = response.body
         @code = response.code
       end
