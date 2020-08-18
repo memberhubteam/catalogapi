@@ -10,7 +10,7 @@
       "domain": {
         "account_description": "The master account",
         "account_name": "Online Rewards",
-        "domain_name": "memberhub.catalogapi.com",
+        "domain_name": "username.catalogapi.com",
         "redemption_active": "0",
         "sockets": {
           "Socket": [

@@ -86,7 +86,7 @@ module CatalogAPI
 
     private
 
-    # http://memberhub.catalogapi.com/docs/checksums/
+    # http://username.catalogapi.com/docs/checksums/
     def checksum
       Base64.encode64(OpenSSL::HMAC.digest('sha1', CatalogAPI.key, concatted))
             .gsub("\n", '')
