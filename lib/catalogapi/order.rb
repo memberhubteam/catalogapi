@@ -3,7 +3,7 @@
 module CatalogAPI
   class Order
     attr_reader :date_placed, :external_user_id, :order_number,
-                :external_order_number, :first_name, :last_name, :socket_id,
+                :external_order_number, :first_name, :last_name,
                 :address_1, :address_2, :address_3, :city, :state_province,
                 :postal_code, :country, :phone_number, :email, :items
 
@@ -15,7 +15,6 @@ module CatalogAPI
       @external_user_id = opts[:external_user_id]
       @order_number = opts[:order_number]
 
-      @socket_id = opts[:socket_id]
       @external_user_id = opts[:external_user_id]
       @external_order_number = opts[:external_order_number]
       @first_name = opts[:first_name]
@@ -29,7 +28,7 @@ module CatalogAPI
       @country = opts[:country]
       @email = opts[:email]
       @phone_number = opts[:phone_number]
-      @items = opts[:items]
+      @items = opts[:items].to_a
     end
 
     class << self
@@ -58,7 +57,8 @@ module CatalogAPI
     # Place an order without requiring a cart.
     # @return [CatalogAPI::Order]
     def place
-      raise CatalogAPI::Error, 'No Socket ID' if socket_id.nil?
+      raise CatalogAPI::Error, 'No Items' if items.nil? || items.length.zero?
+      raise CatalogAPI::Error, 'No Socket ID' if items.first.socket_id.nil?
       raise CatalogAPI::Error, 'No First Name' if first_name.nil?
       raise CatalogAPI::Error, 'No Last Name' if last_name.nil?
       raise CatalogAPI::Error, 'No Adress1' if address_1.nil?
@@ -81,7 +81,8 @@ module CatalogAPI
 
       request = CatalogAPI.request.new(:order_track).get(order_number: order_number)
       json = request.json.dig(:order_track_response, :order_track_result, :order)
-      request.data = CatalogAPI::Order.new(json)
+      items = json.dig(:items, :OrderItem).to_a.map { |i| CatalogAPI::Item.new(i) }
+      request.data = CatalogAPI::Order.new(json.merge(items: items))
       request
     end
 
@@ -91,8 +92,8 @@ module CatalogAPI
       {
         order_place: {
           order_place_request: {
-            credentials: request.required_params,
-            socket_id: socket_id,
+            credentials: request.required_params(''),
+            socket_id: items.first.socket_id,
             external_user_id: external_user_id,
             external_order_number: external_order_number,
             first_name: first_name,
@@ -106,7 +107,7 @@ module CatalogAPI
             country: country,
             phone_number: phone_number,
             email: email,
-            items: items.to_a.map(&:order_params)
+            items: items.map(&:order_params)
           }.reject { |_k, v| v.nil? }.to_h
         }
       }

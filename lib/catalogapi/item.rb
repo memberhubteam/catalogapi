@@ -41,9 +41,9 @@ module CatalogAPI
         catalog_item_id: catalog_item_id,
         quantity: quantity,
         currency: currency,
-        catalog_price: catalog_price,
+        catalog_price: catalog_price.to_f,
         option_id: option_id
-      }
+      }.reject { |_k, v| v.nil? }.to_h
     end
 
     def orderable?
