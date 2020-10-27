@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    catalogapi (0.1.0rc1)
+    catalogapi (0.1.0rc3)
       http (~> 4.0)
 
 GEM

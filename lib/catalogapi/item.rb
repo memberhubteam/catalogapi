@@ -57,7 +57,7 @@ module CatalogAPI
       request = CatalogAPI.request.new(:view_item)
                           .get(socket_id: socket_id, catalog_item_id: catalog_item_id)
       fields = request.json.dig(:view_item_response, :view_item_result, :item)
-      request.data = self.class.new(fields)
+      request.data = self.class.new(fields.merge(socket_id: socket_id))
       request
     end
   end
