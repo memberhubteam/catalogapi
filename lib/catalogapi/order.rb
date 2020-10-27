@@ -5,7 +5,8 @@ module CatalogAPI
     attr_reader :date_placed, :external_user_id, :order_number,
                 :external_order_number, :first_name, :last_name,
                 :address_1, :address_2, :address_3, :city, :state_province,
-                :postal_code, :country, :phone_number, :email, :items
+                :postal_code, :country, :phone_number, :email, :items,
+                :fulfillments
 
     def initialize(opts)
       @date_placed = nil
@@ -28,6 +29,7 @@ module CatalogAPI
       @country = opts[:country]
       @email = opts[:email]
       @phone_number = opts[:phone_number]
+      @fulfillments = opts[:fulfillments].to_a
       @items = opts[:items].to_a
     end
 
@@ -81,8 +83,9 @@ module CatalogAPI
 
       request = CatalogAPI.request.new(:order_track).get(order_number: order_number)
       json = request.json.dig(:order_track_response, :order_track_result, :order)
-      items = json.dig(:items, :OrderItem).to_a.map { |i| CatalogAPI::Item.new(i) }
-      request.data = CatalogAPI::Order.new(json.merge(items: items))
+      items = json.dig(:items, :OrderItem).to_a.map { |i| CatalogAPI::OrderItem.new(i) }
+      fulfillments = json.dig(:fulfillments, :Fulfillment).to_a.map { |i| CatalogAPI::Fulfillment.new(i) }
+      request.data = CatalogAPI::Order.new(json.merge(items: items, fulfillments: fulfillments))
       request
     end
 

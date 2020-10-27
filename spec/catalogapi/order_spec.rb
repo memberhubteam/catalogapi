@@ -88,6 +88,10 @@ RSpec.describe CatalogAPI::Order do
       request = order.track
       order = request.data
       expect(order.order_number).to eq order_number
+      expect(order.fulfillments.count).to eq 1
+      expect(order.fulfillments.first.fulfillment_date).to eq '2013-02-20T22:28:23'
+      expect(order.items.count).to eq 1
+      expect(order.items.first.catalog_item_id).to eq '1970498'
     end
 
     it 'validates order_number params' do
