@@ -11,6 +11,7 @@ RSpec.describe CatalogAPI::Item do
         .to_return(status: 200, body: body.to_json, headers: {})
       request = item.view
       expect(request.data.description).to_not eq nil
+      expect(request.data.socket_id).to_not eq nil
     end
 
     it 'requires catalog_item_id' do
