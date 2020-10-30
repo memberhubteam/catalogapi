@@ -3,7 +3,10 @@
 require 'catalogapi/request'
 require 'catalogapi/catalog'
 require 'catalogapi/category'
+require 'catalogapi/order_item'
+require 'catalogapi/fulfillment'
 require 'catalogapi/item'
+require 'catalogapi/metadata'
 require 'catalogapi/order'
 require 'catalogapi/version'
 
