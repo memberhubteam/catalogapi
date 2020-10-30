@@ -7,8 +7,6 @@ require 'catalogapi/item'
 require 'catalogapi/order'
 require 'catalogapi/version'
 
-require 'pry'
-
 module CatalogAPI
   class Error < StandardError; end
 
